@@ -13,11 +13,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // Run JDIH specific seeders
+        $this->call([
+            RolesAndPermissionsSeeder::class,
+            JdihDataSeeder::class,
         ]);
+
+        $this->command->info('JDIH Database seeded successfully!');
+        $this->command->newLine();
+        $this->command->info('🎉 ILDIS - Indonesian Legal Documentation Information System');
+        $this->command->info('Database setup completed. You can now access the admin panel at: /admin');
+        $this->command->info('Default login: admin@jdih.local / password');
     }
 }
