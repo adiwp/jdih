@@ -83,7 +83,7 @@ class HomeController extends Controller
             ->where('document_type_id', $documentType->id)
             ->firstOrFail();
 
-        if (/Users/adiwahyu/development/jdih/app/Http/Controllers/Web/HomeController.phpdocument->file_path) {
+        if (!$document->file_path) {
             abort(404, 'File not found');
         }
 
